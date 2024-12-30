@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Our Memories</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
+    <style>
+
+    /* Back Button Styling */
+    .back-btn {
+        position: flex;
+        top: 7px;
+        left: 7px;
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 1000; /* Ensure it's on top of other content */
+    }
+
+    .back-btn:hover {
+        background-color: #e55b9e;
+    }
+
+</style>
+</head>
+<body>  
+
+<!-- Back Button -->
+
+    <section class="gallery" id="gallery">
+        <a href="index.html" class="back-btn">Back</a>
+    <h2> Memories 🥰 </h2>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="images/1.jpg" alt="Memory 1">
+            </div>
+            <div class="slide">
+                <img src="images/2.jpg" alt="Memory 2">
+            </div>
+            <div class="slide">
+                <img src="images/3.jpg" alt="Memory 3">
+            </div>
+            <div class="slide">
+                <img src="images/4.jpg" alt="Memory 4">
+            </div>
+            <div class="slide">
+                <img src="images/5.jpg" alt="Memory 5">
+            </div>
+            <div class="slide">
+                <img src="images/6.jpg" alt="Memory 6">
+            </div>
+            <div class="slide">
+                <img src="images/7.jpg" alt="Memory 7">
+            </div>
+            <div class="slide">
+                <img src="images/8.jpg" alt="Memory 8">
+            </div>
+            <div class="slide">
+                <img src="images/9.jpg" alt="Memory 9">
+            </div>
+            <div class="slide">
+                <img src="images/10.jpg" alt="Memory 10">
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="prev" aria-label="Previous Slide">&#10094;</button>
+        <button class="next" aria-label="Next Slide">&#10095;</button>
+
+        <!-- Pagination Dots -->
+        <div class="dots">
+            <span class="dot" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+            <span class="dot" data-slide="5"></span>
+            <span class="dot" data-slide="6"></span>
+            <span class="dot" data-slide="7"></span>
+            <span class="dot" data-slide="8"></span>
+            <span class="dot" data-slide="9"></span>
+            <span class="dot" data-slide="10"></span>
+        </div>
+
+    </div>
+</section>
+
+<section class="love-notes">
+    <h2>Love Notes</h2>
+    <p>You are my sunshine, my moonlight, and every star that lights up the night sky. I am forever grateful for you.</p>
+</section>
+
+<footer>
+    <p>With all my love</p>
+</footer>
+
+<script>
+
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let index = 0;
+    let isPlaying = true;
+    let slideInterval;
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.style.display = 'none');
+        dots.forEach(dot => dot.classList.remove('active'));
+        slides[n].style.display = 'block';
+        dots[n].classList.add('active');
+    }
+
+    function nextSlide() {
+        index = (index + 1) % slides.length;
+        showSlide(index);
+    }
+
+    function prevSlide() {
+        index = (index - 1 + slides.length) % slides.length;
+        showSlide(index);
+    }
+
+    function togglePlayPause() {
+        if (isPlaying) {
+            clearInterval(slideInterval);
+            playPauseButton.textContent = '▶️';
+        } else {
+            slideInterval = setInterval(nextSlide, 5000);
+            playPauseButton.textContent = '⏸️';
+        }
+        isPlaying = !isPlaying;
+    }
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            index = i;
+            showSlide(index);
+        });
+    });
+
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
+    playPauseButton.addEventListener('click', togglePlayPause);
+
+    showSlide(index);
+    slideInterval = setInterval(nextSlide, 5000); // Slide every 5 seconds
+</script>
+</body>
+</html>

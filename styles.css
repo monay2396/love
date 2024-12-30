@@ -1,0 +1,336 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    color: #5a4d4d;
+    background-color: #fdf6f9;
+    line-height: 1.8;
+    overflow-x: hidden;
+    font-size: 17px;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7, #ffdde1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
+    margin: 40px 5%;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 182, 193, 0.3);
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+    z-index: 0;
+    animation: float 8s infinite ease-in-out;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: rgba(238, 156, 167, 0.3);
+    border-radius: 50%;
+    bottom: -70px;
+    right: -70px;
+    z-index: 0;
+    animation: float 9s infinite ease-in-out;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    border-radius: 30px;
+}
+
+.hero .content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    max-width: 70%;
+    animation: fadeIn 2.5s ease-in-out;
+}
+
+.hero .content h1 {
+    font-size: 4.5rem;
+    font-family: 'Dancing Script', cursive;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+.hero .content h2 {
+    font-size: 4.5rem;
+    font-family: 'Dancing Script', cursive;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    letter-spacing: 1.2px;
+}
+
+button.cta {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #ee9ca7;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(238, 156, 167, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+button.cta:hover {
+    background-color: #ffdde1;
+    box-shadow: 0 12px 30px rgba(238, 156, 167, 0.5);
+    transform: translateY(-5px);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero .content h1 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.5rem;
+    }
+    button.cta {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+}
+
+.scroll-btn {
+    display: inline-block;
+    padding: 18px 55px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    border: 3px solid #fff;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.3);
+    transition: background 0.4s ease, transform 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-btn:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 100px 10%;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin: 60px 5%;
+}
+
+.gallery h2 {
+    font-size: 4rem;
+    margin-bottom: 60px;
+    color: #e74c3c;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.slider {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-radius: 20px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slides img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease-in-out;
+}
+
+.slides img:hover {
+    transform: scale(1.05);
+}
+
+/* Slider Controls */
+button.prev, button.next, .play-pause {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 18px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+
+button.prev {
+    left: 0px;
+}
+
+button.next {
+    right: 0px;
+}
+
+.dots {
+    display: flex;
+    flex-direction: column;  /* উল্লম্বভাবে সাজাবে */
+    align-items: center;     /* ডটগুলো কেন্দ্রস্থলে রাখবে */
+    margin-top: 20px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 6px;
+    background-color: #525252a6;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.dot:hover {
+    background-color: #b3b3b3;
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background-color: #e74c3c;
+    transform: scale(1.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero .content h1 {
+        font-size: 3.5rem;
+    }
+
+    .gallery h2 {
+        font-size: 3rem;
+    }
+
+    .scroll-btn {
+        padding: 1px 40px;
+        font-size: 1.3rem;
+    }
+
+    .slides img {
+        border-radius: 15px;
+    }
+
+    button.prev, button.next {
+        padding: 12px;
+    }
+
+    .dot {
+        height: 14px;
+        width: 14px;
+    }
+}
+
+@keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+  .glow {
+    text-shadow: 0 0 8px rgba(255, 182, 193, 0.8); /* Soft pink glow */
+  }
+
+  .float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+  .float-fast {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .heart-container {
+    position: absolute;
+    top: 20px;       /* Distance from the top */
+    right: 20px;     /* Distance from the right */
+    z-index: 1000;   /* Ensures the heart stays above other elements */
+}
+
+.floating-heart {
+    width: 70px;
+    height: auto;
+    animation: heartbeat 1.5s infinite;  /* Keep your heartbeat animation */
+}
