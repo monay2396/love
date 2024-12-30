@@ -4,12 +4,11 @@
   "description": "A website expressing love for my partner",
   "main": "index.html",
   "scripts": {
-    "dev": "vite", 
+    "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
-  "dependencies": {
-    "vite": "^4.0.0"
-  },
-  "devDependencies": {}
+  "devDependencies": {
+    "vite": "^6.0.6"
+  }
 }
