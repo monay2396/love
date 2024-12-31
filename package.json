@@ -1,14 +1,15 @@
 {
   "name": "love",
   "version": "1.0.0",
-  "description": "A website expressing love for my partner",
-  "main": "index.html",
+  "main": "script.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "vite": "^6.0.6"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
   }
 }
